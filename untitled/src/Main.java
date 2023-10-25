@@ -45,8 +45,22 @@ public class Main {
 
         //d.
         int cadS = (int) cadAleatoria.stream().filter(word -> word.startsWith("s")).count();
-        System.out.println("numero de cademas que comienzan con S: "+cadS); 
+        System.out.println("numero de cademas que comienzan con S: "+cadS);
 
+        //e.
+        List<String> notCadEmp = cadAleatoria.stream().filter(word ->!word.isEmpty()).collect(Collectors.toList());
+        System.out.println("lista sin cadenas vacias: "+notCadEmp);
+
+        //f.
+        List<String> listCadSupCinco = notCadEmp.stream().filter(word -> word.length()>5).collect(Collectors.toList());
+        System.out.println("lista con cadenas con mas de 5 caracteres: "+listCadSupCinco);
+
+        //g.
+        String concat = listCadSupCinco.stream().map(String::toUpperCase).collect(Collectors.joining(","));
+        System.out.println("lista concatenada: "+concat);
+
+
+        //2.
     }
     public static int generarNumeroAleatorio(int min, int max) {
         if (min >= max) {
