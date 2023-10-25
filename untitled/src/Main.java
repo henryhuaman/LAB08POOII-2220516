@@ -4,9 +4,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.sql.SQLOutput;
-import java.util.List;
-import java.util.Objects;
-import java.util.Random;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
@@ -61,6 +59,20 @@ public class Main {
 
 
         //2.
+
+        List<Integer> numbers = Stream.generate(() -> {return generarNumeroAleatorio(0,100);}
+
+        ).limit(10).collect(Collectors.toList());
+
+        System.out.println("lista de numeros aleatorios: "+numbers);
+
+        IntSummaryStatistics numeros = numbers.stream().mapToInt(Integer::intValue).summaryStatistics();
+        System.out.println("Recuentos: " + numeros.getCount());
+        System.out.println("Mínimos: " + numeros.getMin());
+        System.out.println("Máximos: " + numeros.getMax());
+        System.out.println("Sumas: " + numeros.getSum());
+        System.out.println("Promedios: " + numeros.getAverage());
+
     }
     public static int generarNumeroAleatorio(int min, int max) {
         if (min >= max) {
